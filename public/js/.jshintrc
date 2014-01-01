@@ -1,0 +1,18 @@
+{
+    "browser": true,
+
+    "jquery": false,
+    "prototypejs": false,
+    "mootools": false,
+    "dojo": false,
+
+    "es5": true,
+    "strict": true,
+    "globalstrict": true,
+
+    "curly": true,
+    "immed": true,
+    "undef": true,
+
+    "predef": ["define", "requirejs", "require"]
+}

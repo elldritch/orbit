@@ -1,0 +1,10 @@
+{
+  "node": true, // Predefine Node variables.
+  "strict": true, // Require 'use strict';
+  "globalstrict": true, // Allow global 'use strict';
+  "curly": true, // Require curly braces, even around 1-line blocks.
+  "immed": true, // Require anonymous functions to be wrapped in parentheses if immediately called.
+  "undef": true, // Require explicit variable definition.
+  "laxcomma": true, // Allow different comma styles.
+  "quotmark": true // Require quotation consistency.
+}

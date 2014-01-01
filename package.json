@@ -1,0 +1,35 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "express-enrouten": "*",
+    "helmet": "*",
+
+    "blade": "*",
+    "stylus": "*",
+    "nib": "*",
+
+    "nodemon": "*"
+  },
+  "devDependencies": {
+    "bower": "*",
+
+    "mocha": "*",
+    "chai": "*",
+    "supertest": "*",
+
+    "grunt": "*",
+    "grunt-contrib-stylus": "*",
+    "grunt-contrib-jade": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-requirejs": "*",
+    "grunt-mocha-cli": "*",
+    "grunt-copy-to": "*"
+  }
+}
