@@ -10,7 +10,8 @@
     "express-enrouten": "*",
     "helmet": "*",
 
-    "blade": "*",
+    "jade": "*",
+    "jade-browser": "*",
     "stylus": "*",
     "nib": "*",
 

@@ -11,19 +11,16 @@ var express = require('express')
   , enrouten = require('express-enrouten')
   , helmet = require('helmet')
 
-  , blade = require('blade')
+  , jadebrowser = require('jade-browser')
   , stylus = require('stylus')
-  , nib = require('nib')
-
-  , jadebrowser = require('jade-browser');
+  , nib = require('nib');
 
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
 
 app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-app.set('view engine', 'blade');
+app.set('view engine', 'jade');
 
 if('production' == app.get('env')){
   app.use(express.compress());
@@ -51,7 +48,7 @@ app.use(stylus.middleware({
   }
 }));
 
-app.use(blade.middleware(path.join(__dirname, 'public', 'templates')));
+app.use(jadebrowser('/js/templates.js', path.join(__dirname, 'public', 'templates')));
 
 if('production' == app.get('env')){
   app.use(express.static(path.join(__dirname, '.build')));
