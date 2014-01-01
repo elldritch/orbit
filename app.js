@@ -48,7 +48,9 @@ app.use(stylus.middleware({
   }
 }));
 
-app.use(jadebrowser('/js/templates.js', path.join('public', 'templates', '**')));
+app.use(jadebrowser('/js/templates.js', path.join('public', 'templates', '**'), {
+  root: __dirname
+}));
 
 if('production' == app.get('env')){
   app.use(express.static(path.join(__dirname, '.build')));
