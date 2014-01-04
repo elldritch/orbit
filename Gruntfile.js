@@ -2,12 +2,14 @@
 
 module.exports = function (grunt){
   grunt.initConfig({
+    // Run JSHint linting.
     jshint: {
       files: ['controllers/**/*.js', 'lib/**/*.js', 'models/**/*.js'],
       options: {
         jshintrc: '.jshintrc'
       }
     },
+    // Run RequireJS optimisation.
     requirejs: {
       build: {
         options: {
@@ -19,6 +21,7 @@ module.exports = function (grunt){
         }
       }
     },
+    // Run Stylus compilation.
     stylus: {
       build: {
         options: {
@@ -30,22 +33,7 @@ module.exports = function (grunt){
         }
       }
     },
-    jade: {
-      build: {
-        files: [
-          {
-            expand: true,
-            cwd: 'public/templates/',
-            src: '**/*.jade',
-            dest: '.build/templates',
-            ext: '.js'
-          }
-        ],
-        options: {
-          client: true
-        }
-      }
-    },
+    // Copy compiled assets to .build
     copyto: {
       build: {
         files: [
@@ -60,9 +48,11 @@ module.exports = function (grunt){
         }
       }
     },
+    // Clean compiled assets.
     clean: {
       'build': '.build'
     },
+    // Run tests.
     mochacli: {
       src: ['test/*.js'],
       options: {
@@ -75,7 +65,7 @@ module.exports = function (grunt){
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-jade');
+  // Load tasks.
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-clean');
@@ -83,7 +73,8 @@ module.exports = function (grunt){
   grunt.loadNpmTasks('grunt-mocha-cli');
   grunt.loadNpmTasks('grunt-copy-to');
 
+  // Register task aliases.
   grunt.registerTask('default', ['clean', 'build']);
-  grunt.registerTask('build', ['jshint', 'jade', 'stylus', 'requirejs', 'copyto']);
+  grunt.registerTask('build', ['jshint', 'stylus', 'requirejs', 'copyto']);
   grunt.registerTask('test', ['jshint', 'mochacli']);
 };
