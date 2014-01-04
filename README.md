@@ -1,8 +1,8 @@
 # Orbit
-Orbit is a loosely coupled framework that minimises black magic usage. Finally, a framework that's not brain surgery.
+Orbit is a loosely coupled framework that minimises black magic usage. Finally, an MVC framework that doesn't require brain surgery.
 
 ## Philosophy
-Sometimes, opinionated stacks are good. Boilerplates, scaffolding, and best practice structuring are all very helpful. But what if I only want part of a framework? What if I agree with socket wrapping but not policy-based authentication? What if I want Jade instead of Dust, or vice versa? Pulling out just the pieces you want usually requires several hours of learning how a deeply connected framework works, trying to make sense of poorly documented black magic.
+Sometimes, opinionated stacks are good. Boilerplates, scaffolding, and best practice structuring are all very helpful. But what if you only want part of a framework? What if you agree with socket wrapping but not policy-based authentication? What if you want Jade instead of Dust, or vice versa? Pulling out just the pieces you want usually requires several hours of learning how a deeply connected framework works, trying to make sense of poorly documented black magic.
 
 Not so with Orbit. Loosely coupled, but still opinionated. Well-documented, familiar, and easy-to-navigate inner workings. Want to use a different module? Just swap middleware and you're good to go.
 
@@ -25,7 +25,7 @@ Orbit's server is a standard Express stack. It takes all standard Express-compat
 * 404 and 500 pages under 'errors' view folder.
 
 ### Routing
-Orbit uses `express-enrouten` as its default routing engine.
+Orbit uses `express-enrouten` as its default routing engine. Enrouten scans the `controllers` directory for any modules that export a function of the signature `function(app){ ... }` and passes them the Express app.
 
 ### Templates
 Orbit uses `node-blade` as its default client-side and server-side templating solution. Server-side templates are stored in the `views` folder while client-side templates are stored in `public/templates`.
