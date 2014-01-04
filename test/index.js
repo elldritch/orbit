@@ -1,42 +1,39 @@
-/*global describe:false, it:false, before:false, after:false, afterEach:false*/
+/*global describe:false, it:false, before:false, beforeEach:false, after:false, afterEach:false*/
 
 'use strict';
 
-
-var app = require('../index'),
-    kraken = require('kraken-js'),
-    request = require('supertest'),
-    assert = require('assert');
-
+var server = require('../server'),
+  request = require('supertest'),
+  assert = require('assert');
 
 describe('index', function () {
+  var mock;
 
-    var mock;
-
-
-    beforeEach(function (done) {
-        kraken.create(app).listen(function (err, server) {
-            mock = server;
-            done(err);
-        });
+  beforeEach(function (done) {
+    server(function(server){
+      mock = server;
+      done();
     });
+  });
 
 
-    afterEach(function (done) {
-        mock.close(done);
-    });
+  afterEach(function (done) {
+    mock.close(done);
+  });
 
 
-    it('should say "hello"', function (done) {
-        request(mock)
-            .get('/')
-            .expect(200)
-            .expect('Content-Type', /html/)
-            .expect(/Hello, /)
-            .end(function(err, res){
-                if (err) return done(err);
-                done()
-            });
-    });
+  it('should connect to index', function (done) {
+    request(mock)
+      .get('/')
+      .expect(200)
+      .expect('Content-Type', /html/)
+      .expect(/.*?Welcome to application-name.*? /)
+      .end(function(err, res){
+        if (err) {
+          return done(err);
+        }
+        done();
+      });
+  });
 
 });

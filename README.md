@@ -41,7 +41,6 @@ Orbit uses a premade `Gruntfile.js` with the following default tasks:
 * clean
 * build
   * Run jshint
-  * Compile Jade templates
   * Compile Stylus files
   * Link and optimise RequireJS files
   * Copy compiled files to `.build`
