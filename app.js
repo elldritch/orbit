@@ -67,6 +67,12 @@ if('production' == app.get('env')){
   app.use(express.static(path.join(__dirname, 'public')));
 }
 
+// Want to use Passport authentication? Just add the following lines to your stack (and add the corresponding package.json modules):
+// var auth = require('./lib/auth');
+// app.use(express.session({secret: 'the dark is scary :('}));
+// app.use(auth.initialization());
+// app.use(auth.session());
+
 // Enable standard routing.
 app.use(app.router);
 
