@@ -11,9 +11,7 @@ var express = require('express')
 
   , blade = require('blade')
   , stylus = require('stylus')
-  , nib = require('nib')
-
-  , jadebrowser = require('jade-browser');
+  , nib = require('nib');
 
 // Initialise the Express stack and set the default listening port.
 var app = express();
