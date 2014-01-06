@@ -26,7 +26,6 @@
 
     "grunt": "*",
     "grunt-contrib-stylus": "*",
-    "grunt-contrib-jade": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-requirejs": "*",
