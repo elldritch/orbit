@@ -1,5 +1,8 @@
 # Orbit
+
 [![Build Status](https://travis-ci.org/The2ndOne3/orbit.png?branch=master)](https://travis-ci.org/The2ndOne3/orbit)
+[![NPM version](https://badge.fury.io/js/kraken-js.png)](http://badge.fury.io/js/kraken-js)
+
 Orbit is a loosely coupled framework that minimises black magic usage. Finally, an MVC framework that doesn't require brain surgery.
 
 ## Philosophy
