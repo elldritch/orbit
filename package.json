@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon server.js",
+    "postinstall": "bower install",
     "test": "mocha --reporter spec"
   },
   "dependencies": {
@@ -17,11 +18,10 @@
     "stylus": "*",
     "nib": "*",
 
+    "bower": "*",
     "nodemon": "*"
   },
   "devDependencies": {
-    "bower": "*",
-
     "mocha": "*",
     "chai": "*",
     "supertest": "*",
