@@ -25,7 +25,8 @@ Orbit's server is a standard Express stack. It takes all standard Express-compat
 * Helmet for security
 * Enrouten for routing
 * Stylus+Nib for CSS preprocessing
-* 404 and 500 pages under 'errors' view folder.
+* Automatic view rendering for anything in views folder
+* 404 and 500 pages under 'errors' view folder
 
 ### Routing
 Orbit uses `express-enrouten` as its default routing engine. Enrouten scans the `controllers` directory for any modules that export a function of the signature `function(app){ ... }` and passes them the Express app.
