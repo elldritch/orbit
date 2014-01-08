@@ -1,9 +1,13 @@
 {
   "name": "application-name",
+  "author": "Firstname Lastname <email@provider.com>",
   "version": "0.0.1",
+  "description": "application-description",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon bin/orbit.js",
+    "postinstall": "bower install",
+    "test": "mocha --reporter spec"
   },
   "dependencies": {
     "express": "*",
@@ -15,22 +19,23 @@
     "stylus": "*",
     "nib": "*",
 
+    "bower": "*",
     "nodemon": "*"
   },
   "devDependencies": {
-    "bower": "*",
-
     "mocha": "*",
     "chai": "*",
     "supertest": "*",
 
     "grunt": "*",
     "grunt-contrib-stylus": "*",
-    "grunt-contrib-jade": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-requirejs": "*",
     "grunt-mocha-cli": "*",
     "grunt-copy-to": "*"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
   }
 }
