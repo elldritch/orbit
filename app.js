@@ -5,6 +5,7 @@
 // Default stack dependencies.
 var express = require('express')
   , path = require('path')
+  , fs = require('fs')
 
   , enrouten = require('express-enrouten')
   , helmet = require('helmet')
@@ -75,6 +76,16 @@ if('production' == app.get('env')){
 
 // Enable standard routing.
 app.use(app.router);
+
+// When controllers are not available, render views by default.
+app.use(function(req, res, next){
+  try{
+    res.render(path.join(app.get('views'), req.url));
+  }
+  catch(e){
+    next();
+  }
+});
 
 // Set default 404 and 500 pages at 'views/errors/404' and 'views/errors/505' when in production.
 // Use the standard Express error handler when in development.
