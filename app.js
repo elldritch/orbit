@@ -82,12 +82,12 @@ if('production' == app.get('env')){
   app.all('*', function(req, res){
     res
       .status(404)
-      .render('errors/404');
+      .render('errors/404', {url: req.url});
   });
   app.use(function(err, req, res, next){
     res
       .status(500)
-      .render('errors/500');
+      .render('errors/500', {url: req.url});
   });
 } else {
   app.use(express.errorHandler());
