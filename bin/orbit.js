@@ -3,5 +3,7 @@
 var server = require('../server');
 
 server(function(orbit){
-  console.log('Welcome to Orbit.');
+  console.log();
+  console.log('We have reached Orbit.');
+  console.log();
 });
