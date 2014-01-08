@@ -5,7 +5,7 @@
   "description": "application-description",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon bin/orbit.js",
     "postinstall": "bower install",
     "test": "mocha --reporter spec"
   },
