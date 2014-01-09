@@ -1,6 +1,7 @@
 # Orbit
 
 [![Build Status](https://travis-ci.org/The2ndOne3/orbit.png?branch=master)](https://travis-ci.org/The2ndOne3/orbit)
+[![NPM version](https://badge.fury.io/js/generator-orbit.png)](http://badge.fury.io/js/generator-orbit)
 
 Orbit is a loosely coupled framework that minimises black magic usage. Finally, an MVC framework that doesn't require brain surgery.
 
@@ -10,7 +11,7 @@ Sometimes, opinionated stacks are good. Boilerplates, scaffolding, and best prac
 Not so with Orbit. Loosely coupled, but still opinionated. Well-documented, familiar, and easy-to-navigate inner workings. Want to use a different module? Just swap middleware and you're good to go.
 
 ## Installation
-Orbit is still under development. To use the current scaffold, `git clone` the repository and start working.
+Orbit is packaged as a Yeoman generator. To install, run `npm -g install yo generator-orbit`. Then `cd` into your project directory and run `yo orbit` to start a project.
 
 ## Usage
 ### Package Management

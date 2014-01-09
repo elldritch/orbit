@@ -1,8 +1,14 @@
 {
-  "name": "application-name",
-  "author": "Firstname Lastname <email@provider.com>",
-  "version": "0.0.1",
-  "description": "application-description",
+  "name": "Orbit",
+  "author": "Lehao Zhang <leo@lehaozhang.com>",
+  "version": "0.1.0",
+  "description": "A framework that isn't brain surgery.",
+  "homepage": "https://github.com/The2ndOne3/orbit",
+  "bugs": "https://github.com/The2ndOne3/orbit/issues",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/The2ndOne3/orbit.git"
+  },
   "private": true,
   "scripts": {
     "start": "nodemon bin/orbit.js",
