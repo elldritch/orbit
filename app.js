@@ -5,7 +5,6 @@
 // Default stack dependencies.
 var express = require('express')
   , path = require('path')
-  , fs = require('fs')
 
   , enrouten = require('express-enrouten')
   , helmet = require('helmet')
