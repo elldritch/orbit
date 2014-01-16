@@ -29,11 +29,6 @@ if('production' == app.get('env')){
 // Use Helmet's default security headers.
 helmet.defaults(app);
 
-// Use Enrouten's directory scanning middleware, configured to the 'controllers' directory.
-app.use(enrouten({
-  directory: 'controllers'
-}));
-
 // Use dev-level logging.
 app.use(express.logger('dev'));
 // Cache and serve the site's favicon located at 'public/images/favicon.ico'.
@@ -73,9 +68,11 @@ if('production' == app.get('env')){
 // app.use(auth.initialization());
 // app.use(auth.session());
 
-// Enable standard routing.
-app.use(app.router);
 
+// Use Enrouten's directory scanning middleware, configured to the 'controllers' directory.
+app.use(enrouten({
+  directory: 'controllers'
+}));
 // When controllers are not available, render views by default.
 app.use(function(req, res, next){
   try{
@@ -89,15 +86,14 @@ app.use(function(req, res, next){
 // Set default 404 and 500 pages at 'views/errors/404' and 'views/errors/505' when in production.
 // Use the standard Express error handler when in development.
 if('production' == app.get('env')){
-  app.all('*', function(req, res){
-    res
-      .status(404)
-      .render('errors/404', {url: req.url});
-  });
   app.use(function(err, req, res, next){
-    res
-      .status(500)
-      .render('errors/500', {url: req.url});
+    if(err.message.indexOf('Failed to lookup view') != -1 && err.view){
+      res.status(404).render('errors/404', {code: 404});
+    }
+    else{
+      console.error('[ORBIT ERR]', err);
+      res.status(500).render('errors/500', {code: 500});
+    }
   });
 } else {
   app.use(express.errorHandler());
