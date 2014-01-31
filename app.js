@@ -68,6 +68,7 @@ if('production' == app.get('env')){
 // app.use(auth.initialization());
 // app.use(auth.session());
 
+var url = require('url');
 
 // Use Enrouten's directory scanning middleware, configured to the 'controllers' directory.
 app.use(enrouten({
@@ -76,7 +77,7 @@ app.use(enrouten({
 // When controllers are not available, render views by default.
 app.use(function(req, res, next){
   try{
-    res.render(path.join(app.get('views'), req.url));
+    res.render(path.join(app.get('views'), url.parse(req.url).pathname.substr(1)));
   }
   catch(e){
     next();
