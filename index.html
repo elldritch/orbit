@@ -54,114 +54,28 @@
 
 <p>Orbit is a loosely coupled framework that minimises black magic usage. Finally, an MVC framework that isn't brain surgery.</p>
 
-<h2>
-<a name="philosophy" class="anchor" href="#philosophy"><span class="octicon octicon-link"></span></a>Philosophy</h2>
+<h1>
+<a name="philosophy" class="anchor" href="#philosophy"><span class="octicon octicon-link"></span></a>Philosophy</h1>
 
 <p>Sometimes, opinionated stacks are good. Boilerplates, scaffolding, and best practice structuring are all very helpful. But what if you only want part of a framework? What if you agree with socket wrapping but not policy-based authentication? What if you want Jade instead of Dust, or vice versa? Pulling out just the pieces you want usually requires several hours of learning how a deeply connected framework works, trying to make sense of poorly documented black magic.</p>
 
 <p>Not so with Orbit. Loosely coupled, but still opinionated. Well-documented, familiar, and easy-to-navigate inner workings. Want to use a different module? Just swap middleware and you're good to go.</p>
 
-<h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
-<p>Orbit is packaged as a Yeoman generator. To install, run <code>npm -g install yo generator-orbit</code> and run <code>yo orbit</code> to start a project.</p>
+<p>Orbit is packaged as a Yeoman generator. Run <code>npm -g install yo generator-orbit</code> to install the generator.</p>
 
-<h2>
-<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+<h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
 
-<h3>
-<a name="package-management" class="anchor" href="#package-management"><span class="octicon octicon-link"></span></a>Package Management</h3>
+<p><code>yo orbit</code> will run the generator, after which <code>npm start</code> starts the server. See the <a href="https://github.com/The2ndOne3/orbit">README</a> for more documentation.</p>
 
-<p>Client-side components are handled by <code>bower install</code>, which installs into <code>public/components</code>. Server-side components are handled by <code>npm install</code> into <code>node_modules</code>.</p>
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
-<h3>
-<a name="server-daemon" class="anchor" href="#server-daemon"><span class="octicon octicon-link"></span></a>Server Daemon</h3>
-
-<p><code>npm start</code> will call <code>nodemon app.js</code> on port 8000. Don't like <code>nodemon</code>? Try <code>forever</code>. Need programmatic daemon control? Try writing a <code>daemon.js</code> instead using <code>forever-monitor</code>, then setting <code>npm start</code> to <code>node daemon.js</code>.</p>
-
-<h3>
-<a name="server-middleware" class="anchor" href="#server-middleware"><span class="octicon octicon-link"></span></a>Server Middleware</h3>
-
-<p>Orbit's server is a standard Express stack. It takes all standard Connect-compatible middlewares. Here's the default stack:</p>
-
-<ul>
-<li>
-<a href="https://github.com/bminer/node-blade">Blade</a> for view engine</li>
-<li>
-<a href="https://github.com/evilpacket/helmet">Helmet</a> for security</li>
-<li>
-<a href="https://github.com/paypal/express-enrouten">Enrouten</a> for routing</li>
-<li>
-<a href="https://github.com/learnboost/stylus">Stylus</a> + <a href="https://github.com/visionmedia/nib">Nib</a> for CSS preprocessing</li>
-<li>Automatic view rendering</li>
-<li>404 and 500 pages under 'errors' view folder</li>
-</ul><h3>
-<a name="routing" class="anchor" href="#routing"><span class="octicon octicon-link"></span></a>Routing</h3>
-
-<p>Orbit uses <code>express-enrouten</code> as its default routing engine. Enrouten scans the <code>controllers</code> directory for any modules that export a function of the signature <code>function(app){ ... }</code> and passes them the Express app. Within each controller, you can then declare an arbitrary amount of routes using <code>app.get</code> as usual. See Enrouten's documentation for more details.</p>
-
-<p>If a view exists but a route with its name does not, Orbit will automatically attempt to render that view without locals. For example, if only <code>app.get('/alice', ...)</code> and <code>app.get('/bob', ...)</code> are defined, a request to <code>/eve</code> will attempt to <code>res.render('eve')</code> before falling back to a 404.</p>
-
-<p>Want resourceful routing? That's basically the same thing as declaring a bunch of routes on different verbs, but Orbit supports it anyway -- just plug in <a href="https://github.com/visionmedia/express-resource">express-resource</a>.</p>
-
-<h3>
-<a name="templates" class="anchor" href="#templates"><span class="octicon octicon-link"></span></a>Templates</h3>
-
-<p>Orbit uses <code>node-blade</code> as its default client-side and server-side templating solution. Server-side templates are stored in the <code>views</code> folder while client-side templates are stored in <code>public/templates</code>. See Blade's documentation for more details.</p>
-
-<p>Want to use Jade as your templating language instead? Check out <a href="https://github.com/storify/jade-browser">jade-browser</a> for client-side rendering and <a href="https://github.com/gruntjs/grunt-contrib-jade">grunt-contrib-jade</a> if you want precompilation. Server-side rendering works the same as vanilla Express.</p>
-
-<h3>
-<a name="models" class="anchor" href="#models"><span class="octicon octicon-link"></span></a>Models</h3>
-
-<p>Orbit doesn't come with a default model system, but recommends <a href="https://github.com/LearnBoost/mongoose">Mongoose</a> for MongoDB databases and <a href="https://github.com/sequelize/sequelize">Sequelize</a> for SQL databases. Anything that supports Express also supports Orbit right out of the box.</p>
-
-<h3>
-<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h3>
-
-<p>Orbit uses <a href="https://github.com/visionmedia/mocha">Mocha</a> for testing by default, with <a href="https://github.com/chaijs/chai">Chai</a> as the assertions library and <a href="https://github.com/visionmedia/supertest">SuperTest</a> for super-agent testing.</p>
-
-<p>Orbit doesn't come with a default client-side JavaScript testing framework, but recommends <a href="https://github.com/karma-runner/karma">Karma</a> and <a href="https://github.com/ariya/phantomjs/">PhantomJS</a>.</p>
-
-<h3>
-<a name="deployment" class="anchor" href="#deployment"><span class="octicon octicon-link"></span></a>Deployment</h3>
-
-<p>Orbit uses a premade <code>Gruntfile.js</code> with the following default tasks:</p>
-
-<ul>
-<li>
-<code>clean</code>
-
-<ul>
-<li>Clean the <code>.build</code> folder</li>
-</ul>
-</li>
-<li>
-<code>build</code>
-
-<ul>
-<li>Run <code>jshint</code> linting</li>
-<li>Compile Stylus files</li>
-<li>Link and optimise RequireJS files if using RequireJS</li>
-<li>Copy compiled files to <code>.build</code>
-</li>
-</ul>
-</li>
-<li>
-<code>test</code>
-
-<ul>
-<li>Runs Mocha unit tests.</li>
-</ul>
-</li>
-</ul><p>When <code>NODE_ENV</code> is set to <code>production</code>, Orbit automatically compresses its responses and serves precompiled files from <code>.build</code> -- don't forget to <code>grunt build</code> beforehand!</p>
-
-<h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
-
-<p>Copyright 2013 Lehao Zhang</p>
-
-<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a> Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>
+<p>© 2013 Lehao Zhang
+Released to the general public under the terms of the Apache License 2.0.</p>
       </section>
 
       <footer>
